@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frontend UX Heuristics"
+  short_description: "Review UI with usability heuristics"
+  default_prompt: "Use $frontend-ux-heuristics to review this UI flow and suggest concrete improvements."
