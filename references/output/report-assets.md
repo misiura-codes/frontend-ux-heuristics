@@ -6,15 +6,19 @@ Use this helper when generating Markdown reports that may include screenshots, a
 - If the report includes any image or asset, create a folder named after the report and put `report.md` plus all assets inside it.
 - Keep Markdown image links relative to the report folder.
 - Keep all source images, annotated images, crops, and exported evidence with the report so the folder can be shared or zipped as one artifact.
+- For annotated screenshots, `report.md` should embed the flattened PNG, not an SVG. SVG is allowed as an editable secondary asset only.
 - Use stable asset names instead of long one-off names inside the folder:
   - `source.png`
-  - `annotated.svg` or `annotated.png`
+  - `annotated.png` (flattened composite — markers on the screenshot; reference this from `report.md`)
+  - `annotated.svg` (editable overlay; screenshot embedded as a base64 data URI, never an external path)
   - `viewport-top.png`
-  - `viewport-top-annotated.svg`
+  - `viewport-top-annotated.png`
+  - `viewport-top-annotated.svg` (optional editable backup)
   - `viewport-middle.png`
   - `viewport-bottom.png`
   - `finding-01-submit-button.png`
-  - `finding-01-submit-button-annotated.svg`
+  - `finding-01-submit-button-annotated.png`
+  - `finding-01-submit-button-annotated.svg` (optional editable backup)
 - For multiple screenshots, name by viewport, region, interaction state, or finding number.
 - Avoid storing unrelated reports or shared assets in the same report folder.
 
@@ -25,8 +29,8 @@ reports/
   dashboard-ux-review/
     report.md
     source.png
+    annotated.png
     annotated.svg
-    finding-01-current-status.svg
-    finding-02-contrast.svg
+    finding-01-current-status-annotated.png
+    finding-02-contrast-annotated.png
 ```
-

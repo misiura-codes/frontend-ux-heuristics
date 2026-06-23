@@ -15,12 +15,12 @@ Use this helper when reviewing a real website or app through a browser, extensio
 - When browser/DOM evidence exposes element bounding boxes, prefer targeted element or region annotations over a giant full-page screenshot.
 - Use full-page annotations only when the page-level context is necessary to understand the issue, such as hierarchy, navigation, repeated patterns, or scroll-position problems.
 - For element-level findings, capture a padded crop around the element or region so developers can see enough neighboring context.
-- Name targeted artifacts by finding number or region, such as `finding-01-submit-button-annotated.png` or `pricing-card-region-annotated.svg`.
+- Name targeted artifacts by finding number or region, such as `finding-01-submit-button-annotated.png` or `pricing-card-region-annotated.png`. Keep an SVG only as an editable backup, not as the primary report image.
 
 ## Long-Page Annotations
 
 - Use one annotated full-page image only when markers remain readable.
-- Otherwise create one annotated image per viewport, section, element, or interaction state, using names like `page-top-annotated.svg`, `page-form-error-annotated.svg`, `submit-button-focus-annotated.svg`, or `page-mobile-annotated.svg`.
+- Otherwise create one annotated image per viewport, section, element, or interaction state, using names like `page-top-annotated.png`, `page-form-error-annotated.png`, `submit-button-focus-annotated.png`, or `page-mobile-annotated.png`.
 - In the report, place each inline annotated image near the relevant findings or under an `Annotated screenshots:` section.
 - Keep marker numbering unique across all images in the same report.
 - Include a short scope caption for each annotated image, such as `Desktop top viewport, 1440x900` or `Primary CTA region, cropped with 48px padding`.
@@ -33,8 +33,10 @@ Use when the user asks for marked screenshots, when spatial findings are hard to
 - Match annotation numbers exactly to report findings.
 - Mark only material findings; do not add markers for optional polish or invented issues.
 - Keep markers sparse enough that the original UI remains readable.
-- Prefer raster output such as `*-annotated.png` when image editing is available.
-- If raster editing is unavailable, create an SVG overlay such as `*-annotated.svg`; embed the source screenshot in the SVG when possible so the overlay is self-contained.
-- Add an inline `Annotated screenshot:` image near the top of the report, then add an `Annotated markers:` key after the findings.
+- The annotated artifact must render standalone: when the file is opened in a Markdown preview, IDE preview, or sandbox, the screenshot and the markers must both be visible. The common failure is an SVG whose markers show over blank space because its screenshot did not load.
+- Create a flattened raster `*-annotated.png` with markers composited directly onto the screenshot, using whatever raster tool exists (image editor, browser screenshot, ImageMagick, PHP GD, Python/Pillow, rsvg, or OS tooling). Reference this PNG from `report.md`; it is the primary deliverable because IDEs and Markdown previews render it reliably.
+- If you also create an SVG overlay for editability, embed the screenshot inline as a base64 data URI (`href="data:image/png;base64,..."`). Never reference the screenshot by file name or relative path from inside an SVG.
+- Do not embed SVG as the main annotated image in `report.md` when a PNG can be produced. Link SVG as `Editable overlay:` only.
+- Verify before delivering: open the rendered PNG and confirm the screenshot and every marker are visible. If no raster output can be produced, deliver a self-contained SVG, say that PNG generation was unavailable, and do not imply the overlay was verified in Markdown or IDE preview.
+- Add the inline annotated image near the top of the report, then add an `Annotated markers:` key after the findings.
 - If annotation is not possible, add a `Marked locations:` text section instead of pretending an image was generated.
-
