@@ -4,7 +4,7 @@ A skill for designing, implementing, and reviewing frontend UI/UX against the 10
 
 ## What it does
 
-Loads only the heuristic and context helpers relevant to the task and produces concrete, heuristic-tagged UI changes rather than vague principles. Covers forms, dashboards, search, interaction patterns, and complex applications.
+Loads the relevant heuristic and context helpers for the task, with optional output helpers for structured audits, reports, and screenshot annotations. Produces concrete, heuristic-tagged UI changes rather than vague principles.
 
 ## Install
 
@@ -57,9 +57,17 @@ If you'd rather not clone, download the directory as a zip and place it at the s
 
 ## Usage
 
-The skill triggers naturally on frontend UI/UX work — design, review, forms, dashboards, error states, navigation. To invoke explicitly:
+The skill triggers naturally on frontend UI/UX work — design, review, forms, dashboards, error states, navigation. It adapts to the kind of feedback requested:
 
 > "Use frontend-ux-heuristics to review this dashboard."
+
+> "What's good about this screen?"
+
+> "Only point out UX issues in this screenshot."
+
+> "I'm implementing this flow; keep the heuristics in mind while coding."
+
+> "Audit this page in Chrome and give me concrete UX feedback."
 
 For implementation, the skill loads only the heuristic helpers relevant to the surface under review. For a full evaluation, ask for a "heuristic evaluation" and all H1–H10 helpers will be loaded.
 
@@ -74,7 +82,8 @@ frontend-ux-heuristics/
 └── references/
     ├── index.md
     ├── heuristics/      # H1–H10 helpers
-    └── context/         # Forms, search, complex apps, interaction patterns
+    ├── context/         # Accessibility, brainstorming, complex apps, forms, interaction patterns, search
+    └── output/          # Review modes, screenshots, annotations, report assets
 ```
 
 ## Attribution
