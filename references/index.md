@@ -25,10 +25,16 @@ Use this as the entry point for the heuristic reference helpers. Read only the h
 
 ## Context Helpers
 
+- [Accessibility](context/accessibility.md): contrast, color independence, focus, keyboard, target size, names/labels, and motion when evidence is available or the user asks.
+- [Brainstorming and Planning](context/brainstorming-and-planning.md): feature ideation, product planning, concept tradeoffs, UX guardrails, and use alongside another brainstorming/design skill.
 - [Complex Applications](context/complex-applications.md): enterprise tools, domain-specific software, nonlinear workflows, dense data, trained users, high-impact decisions.
 - [Forms and Inputs](context/forms-and-inputs.md): forms, validation, date input, radio buttons, checkboxes, dropdowns, constrained choices.
 - [Interaction Patterns](context/interaction-patterns.md): tabs, accordions, dropdown menus, tooltips, icons, overlays, coach marks, progressive disclosure.
 - [Search and Findability](context/search-and-findability.md): site/app/docs search, suggestions, scoped search, filters, no-results recovery, large information spaces.
+
+## Output Helpers
+
+- [Output Helpers](output/index.md): choose only the output helper needed for review modes, screenshot/live audits, annotations, Markdown report assets, brainstorming guardrails, implementation guidance, or formal heuristic evaluation.
 
 ## Review Prioritization
 
